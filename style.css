@@ -378,3 +378,18 @@ h2 {
 #modal-body li {
     margin-bottom: 10px;
 }
+/* style.css 맨 아래에 추가 */
+
+/* 표지 이미지 스타일 */
+.intro-image-container {
+    margin: 40px 0; /* 위아래 여백 */
+    text-align: center;
+}
+
+.intro-image {
+    max-width: 60%; /* 화면 너비의 60%까지만 차지 */
+    height: auto;   /* 비율 유지 */
+    /* 필요하다면 약간의 그림자 효과 */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
