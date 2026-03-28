@@ -393,3 +393,26 @@ h2 {
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+/* style.css 맨 아래에 추가 */
+
+/* 모달 내부 이미지 스타일 */
+/* 클릭하면 커지는 창에서 나타나는 이미지 크기 조절 */
+.modal-image-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px; /* 텍스트와의 간격 */
+}
+
+.modal-image {
+    max-width: 100%;    /* 모달 너비에 맞춤 */
+    max-height: 300px;   /* 세로가 너무 커지지 않도록 제한 (프로젝터 고려) */
+    height: auto;        /* 비율 유지 */
+    border-radius: 8px;  
+    object-fit: cover;   /* 비율 깨짐 방지 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 모달 내 설명 텍스트 상단 여백 조절 */
+.modal-desc {
+    margin-top: 0;
+}
