@@ -259,3 +259,25 @@ careerCards.forEach(card => {
         card.classList.toggle('active-red');
     });
 });
+/* --------------------------------
+   전자공학 페이지 캐릭터 클릭 인터랙션
+-------------------------------- */
+const charTrigger = document.getElementById('char-trigger');
+const speechBubble = document.getElementById('speech-bubble');
+
+if (charTrigger && speechBubble) {
+    charTrigger.addEventListener('click', (e) => {
+        // 이벤트 버블링 방지 (슬라이드 이동 등 방지)
+        e.stopPropagation(); 
+        
+        // 말풍선 'show' 클래스를 토글 (껐다 켰다)
+        speechBubble.classList.toggle('show');
+    });
+
+    // 💡 UX 배려: 말풍선이 켜져 있을 때 다른 곳을 클릭하면 닫히도록 함
+    document.addEventListener('click', (e) => {
+        if (speechBubble.classList.contains('show') && !charTrigger.contains(e.target)) {
+            speechBubble.classList.remove('show');
+        }
+    });
+}
