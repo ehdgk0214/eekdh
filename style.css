@@ -195,16 +195,17 @@ h2 {
 
 .card {
     background-color: var(--color-card-bg);
-    padding: 30px;
+    padding: 30px 15px;/*좌우 15px 줄여서 공간 확보*/
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     color: var(--color-sub-red);
+    white-space: nowrap; /*줄바꿈 강제 방지(버그나면 빼)*/
 }
 
 .card p {
