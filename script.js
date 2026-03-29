@@ -133,21 +133,36 @@ const examModalBody = document.getElementById('exam-modal-body');
 function openModal(data) {
     modalTitle.innerText = data.title;
     
-    // 내용 구성 (💡 핵심: 기존의 #dw-example-container 이미지 영역을 HTML에서 **제거**합니다.)
-    let contentHtml = `<p class="modal-desc">${data.desc}</p><ul>`;
+    // 다시 좌우 분할 레이아웃으로 묶어줍니다.
+    let contentHtml = `<div class="modal-flex-layout">`;
+    
+    // 1. 왼쪽: 텍스트 영역 (설명 + 리스트)
+    contentHtml += `<div class="modal-text-zone">`;
+    contentHtml += `<p class="modal-desc">${data.desc}</p><ul>`;
     data.details.forEach(detail => {
         contentHtml += `<li>${detail}</li>`;
     });
-    contentHtml += `</ul>`;
+    contentHtml += `</ul></div>`; // 텍스트 영역 닫기
+
+    // 2. 오른쪽: 메인 이미지 영역 (data.img가 있을 경우에만 렌더링)
+    if (data.img) {
+        contentHtml += `
+            <div class="modal-image-zone">
+                <img src="${data.img}" alt="${data.title}" class="modal-image">
+            </div>
+        `;
+    }
+
+    contentHtml += `</div>`; // 전체 레이아웃 닫기
     
     modalBody.innerHTML = contentHtml;
 
-    // 모달 표시 로직 (기존 동일)
+    // 모달 표시 로직
     modalOverlay.classList.remove('hidden');
     setTimeout(() => {
         modalOverlay.classList.add('show');
         
-        // 모달이 완전히 뜨고 HTML이 렌더링 된 후에 이벤트를 걸어야 합니다.
+        // 💡 중요: 오른쪽 이미지를 띄운 상태에서, 텍스트 안의 클릭 용어(Delta-Wye) 이벤트도 연결합니다.
         attachDynamicTermEvents(); 
     }, 10);
 }
