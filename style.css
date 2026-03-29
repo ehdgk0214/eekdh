@@ -543,3 +543,69 @@ h2 {
     visibility: visible;
     transform: translateY(0); /* 제자리로 */
 }
+/* style.css 맨 아래에 추가 */
+
+/* --------------------------------
+   모달 내 용어 클릭 및 예시 이미지 인터랙션
+-------------------------------- */
+
+/* 1. 클릭 가능한 용어 (Delta-Wye) 스타일 */
+.clickable-term {
+    color: var(--color-main-red); /* 메인 레드로 강조 */
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+/* 밑줄 효과 */
+.clickable-term::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-sub-red);
+    transform: scaleX(0); /* 처음엔 안 보임 */
+    transition: transform 0.3s ease;
+}
+
+/* 호버 시 밑줄 나타남 */
+.clickable-term:hover::after {
+    transform: scaleX(1);
+}
+
+/* 2. 숨겨진 이미지 컨테이너 (슬라이드 다운 효과용) */
+.hidden-exam {
+    max-height: 0;        /* 높이를 0으로 설정하여 숨김 */
+    overflow: hidden;     /* 넘치는 이미지 숨김 */
+    opacity: 0;           /* 투명하게 */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, margin 0.5s ease-out;
+    margin: 0;            /* 여백 초기화 */
+    text-align: center;   /* 이미지 중앙 정렬 */
+}
+
+/* JS로 'open' 클래스가 추가되었을 때 상태 */
+.hidden-exam.open {
+    max-height: 500px;     /* 이미지가 충분히 보일만한 최대 높이 설정 */
+    opacity: 1;           /* 불투명하게 */
+    margin: 20px 0;        /* 위아래 여백 부여 */
+    padding: 15px;
+    background-color: #F0F0F0; /* 아주 연한 회색 배경으로 영역 구분 */
+    border-radius: 8px;
+}
+
+/* 3. 예시 이미지 및 캡션 스타일 */
+.exam-img {
+    max-width: 100%;       /* 컨테이너 너비에 맞춤 */
+    max-height: 350px;     /* 너무 커지지 않도록 제한 */
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); /* 연한 그림자 */
+    margin-bottom: 10px;
+}
+
+.exam-caption {
+    font-size: 0.9rem;     /* 본문보다 작게 */
+    color: var(--color-text-muted);
+    margin: 0;
+}
