@@ -468,7 +468,7 @@ h2 {
 .char-interaction-container {
     position: absolute;
     bottom: 50px;    /* 바닥에서 여백 */
-    left: 70px;      /* 왼쪽에서 여백 */
+    left: 150px;      /* 왼쪽에서 여백 */
     display: flex;
     flex-direction: column-align; /* 말풍선이 캐릭터 위에 오도록 */
     align-items: flex-start;
@@ -478,7 +478,7 @@ h2 {
 
 /* 캐릭터 이미지 스타일 */
 .char-img {
-    width: 170px;    /* 캐릭터 크기 조절 (원하는 대로 변경 가능) */
+    width: 150px;    /* 캐릭터 크기 조절 (원하는 대로 변경 가능) */
     height: auto;
     transition: transform 0.3s ease;
     /* 약간의 그림자 효과로 입체감 부여 */
