@@ -336,19 +336,39 @@ careerCards.forEach(card => {
 /* --------------------------------
    전자공학 페이지 캐릭터 클릭 인터랙션
 -------------------------------- */
+/* script.js 맨 아래 코드 교체 */
+
+/* --------------------------------
+   전자공학 페이지 캐릭터 클릭 인터랙션 (캐시 기록 포함)
+-------------------------------- */
 const charTrigger = document.getElementById('char-trigger');
 const speechBubble = document.getElementById('speech-bubble');
+const charExclamation = document.getElementById('char-exclamation'); // 느낌표 가져오기
 
 if (charTrigger && speechBubble) {
+    // 1. 페이지 로드 시: 이전에 클릭한 기록이 있는지 LocalStorage 확인
+    // 기록이 있다면 느낌표를 처음부터 숨깁니다.
+    if (localStorage.getItem('charClicked') === 'true') {
+        if (charExclamation) charExclamation.classList.add('hidden');
+    }
+
+    // 2. 캐릭터 클릭 이벤트
     charTrigger.addEventListener('click', (e) => {
-        // 이벤트 버블링 방지 (슬라이드 이동 등 방지)
         e.stopPropagation(); 
         
-        // 말풍선 'show' 클래스를 토글 (껐다 켰다)
+        // 말풍선 토글 (껐다 켰다)
         speechBubble.classList.toggle('show');
+
+        // 처음 클릭해서 느낌표가 아직 살아있을 때만 동작
+        if (charExclamation && !charExclamation.classList.contains('hidden')) {
+            // 느낌표 숨김 처리
+            charExclamation.classList.add('hidden');
+            // 브라우저 LocalStorage에 '클릭했음'이라고 영구 기록
+            localStorage.setItem('charClicked', 'true');
+        }
     });
 
-    // 💡 UX 배려: 말풍선이 켜져 있을 때 다른 곳을 클릭하면 닫히도록 함
+    // 3. 말풍선 밖을 클릭하면 말풍선 닫기
     document.addEventListener('click', (e) => {
         if (speechBubble.classList.contains('show') && !charTrigger.contains(e.target)) {
             speechBubble.classList.remove('show');
