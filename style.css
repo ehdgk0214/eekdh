@@ -500,7 +500,7 @@ h2 {
 .speech-bubble {
     position: absolute;
     bottom: 115%;    /* 캐릭터 이미지 위쪽에 배치 */
-    left: 45px;
+    left: 40px;
     width: 300px;    /* 말풍선 너비 */
     background-color: #333; /* 어두운 배경으로 가독성 확보 */
     color: #fff;     /* 흰색 글씨 */
